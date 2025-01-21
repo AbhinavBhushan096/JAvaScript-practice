@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Life Assistant</title>
+  <style>
+    .stat-bar { width: 100%; background: #eee; margin: 5px 0; border-radius: 5px; }
+    .stat { height: 20px; text-align: center; line-height: 20px; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Your Stats</h1>
+  <div class="stat-bar"><div id="energy" class="stat" style="width: 50%; background: #4caf50;">Energy: 50</div></div>
+  <div class="stat-bar"><div id="productivity" class="stat" style="width: 50%; background: #2196f3;">Productivity: 50</div></div>
+  <div class="stat-bar"><div id="mood" class="stat" style="width: 50%; background: #ff9800;">Mood: 50</div></div>
+
+  <button onclick="logAction('sleep')">Log Sleep</button>
+  <button onclick="logAction('study')">Log Study</button>
+  <button onclick="logAction('exercise')">Log Exercise</button>
+  <button onclick="logAction('procrastination')">Log Procrastination</button>
+
+  <script>
+    let stats = { energy: 50, productivity: 50, mood: 50 };
+
+    function logAction(action) {
+      const actions = {
+        sleep: { stat: "energy", points: 10 },
+        study: { stat: "productivity", points: 15 },
+        exercise: { stat: "mood", points: 10 },
+        procrastination: { stat: "productivity", points: -10 }
+      };
+
+      const { stat, points } = actions[action];
+      stats[stat] = Math.max(0, Math.min(stats[stat] + points, 100));
+      document.getElementById(stat).style.width = `${stats[stat]}%`;
+      document.getElementById(stat).innerText = `${stat.charAt(0).toUpperCase() + stat.slice(1)}: ${stats[stat]}`;
+    }
+  </script>
+</body>
+</html>

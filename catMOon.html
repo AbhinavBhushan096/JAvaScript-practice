@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Landing on the Moon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: white;
+            text-align: center;
+        }
+        .header {
+            padding: 20px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .moon {
+            margin: 20px auto;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ccc 50%, #bbb 60%, #999 80%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+        }
+        .cat {
+            width: 100px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 2s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -50%) translateY(-10px);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(10px);
+            }
+        }
+        .cta {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ffdb4d;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Cat Landing on the Moon</div>
+    <div class="moon">
+        <img src="cat.png" alt="Cat" class="cat">
+    </div>
+    <div class="cta">Explore the Journey</div>
+    <div class="stars" id="stars"></div>
+
+    <script>
+        // Generate stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.opacity = Math.random();
+            star.style.transform = `scale(${Math.random() * 1.5})`;
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
