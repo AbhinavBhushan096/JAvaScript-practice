@@ -25,8 +25,13 @@ document
 // arr.sort()// this is wrong as sorting in array is done by strings
 // console.log(arr)
 
-document.getElementById("addNewItem").addEventListener("click", function () {
+/* document.getElementById("addNewItem").addEventListener("click", function () {
   let newItem = document.createElement("li");
   newItem.textContent = "Eggs";
   document.getElementById("shoppingList").appendChild(newItem);
+});
+ */
+
+document.getElementById("teaList").addEventListener('click',function(Event){
+  console.log(Event)
 });

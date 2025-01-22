@@ -58,11 +58,51 @@ document.getElementById("addNewItem").addEventListener("click", function () {
   document.getElementById("shoppingList").appendChild(newItem);
 });
 
-
 //example-5
-document.getElementById("removeLastTask").addEventListener("click",function(){
-  let taskitem=document.getElementById("taskList");
-  taskitem.remove()
-});
+document
+  .getElementById("removeLastTask")
+  .addEventListener("click", function () {
+    let taskitem = document.getElementById("taskList");
+    taskitem.lastElementChild.remove();
+  });
 
 //example 6
+document.getElementById("clickMeButton").addEventListener("click", function () {
+  alert("chaicode");
+});
+
+//example 7
+document.getElementById("teaList").addEventListener("click", function (event) {
+  // console.log(event.target)
+  if (event.target && event.target.matches(".teasItem")) {
+    alert("you selected: " + event.target.textContent);
+  }
+});
+
+//example 8
+document
+  .getElementById("feedbackForm")
+  .addEventListener("submit", function (event) {
+    // alert("submitted")
+    event.preventDefault();
+    let feedback = document.getElementById("feedbackInput").value;
+    console.log(feedback);
+    document.getElementById(
+      "feedbackDisplay"
+    ).textContent = `Feedback is: ${feedback}`;
+    document.getElementById("feedbackDisplay").style.backgroundColor = "red";
+
+    let label = document.querySelector('label[for="feedbackInput"]');
+    console.log(label);
+  });
+
+//example9
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("domStatus").textContent = "Dom Fully loaded";
+});
+
+//example 10 
+document.getElementById("toggleHighlight").addEventListener("click",function(){
+  let description = document.getElementById("descriptionText");
+  description.classList.toggle("highlight")
+});
